@@ -1,0 +1,19 @@
+{% extends 'Pages/Base.html' %}
+
+{% load static %}
+
+{% block css %} 
+<link rel="stylesheet" href="{% static 'config/css/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<h1>Registrar Nuevo Producto</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-guardar">Guardar Producto</button>
+</form>
+
+<a href="{% url 'Productos' %}" class="btn-crear">Volver a la lista de productos</a>
+{% endblock %}

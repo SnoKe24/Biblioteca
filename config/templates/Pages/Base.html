@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Southech</title>
+
+    <link rel="icon" href="{% static 'img/isologoB.ico' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    {% block css %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header class="encabezado">
+        <div class="logo">
+            <img src="{% static 'img/' %}" alt="librologo">
+        </div>
+        <div class="menu-iconos">   
+            <div class="menu">
+                <a href="{% url 'Home' %}">Inicio</a>
+                <a href="{% url 'Productos' %}">Productos</a>
+                <a href="{% url 'Catalogo' %}">Catálogo</a>
+                <a href="{% url 'About' %}">Nosotros</a>
+                
+
+            <div class="iconos">
+                <a href="https://wa.me/5491133622966">
+                    <button>
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                </a>
+                <a href="https://www.instagram.com/sou.thech/">
+                    <button>
+                        <i class="fab fa-instagram"></i>
+                    </button>
+                </a>
+                <a href="https://x.com/dondetashermosa">
+                    <button>
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                </a>
+                <li>
+                    {% if user.is.authenticated %}
+                </li>
+                <li>
+                    <a href="#">{{ user.username }}</a>
+                </li>
+                {% else %}
+                    <a href="{% url 'login' %}">
+                        <button>
+                            <i class="fa circle-user"></i>
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container mx-auto p-4">
+
+
+        {% if messages %}
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+        {%endif %}
+
+        {% block contenido %}
+        {% endblock %}
+
+
+    </div>
+
+    <footer>
+        <div class="pie">
+            <div>
+                <h4>ACERCA DE</h4>
+                <ul class="pielista">
+                    <li><a href="#"><i class="fa-light fa-location-dot" style="color: #d0920b;"></i>Ramón Santamarina
+                            1128, local 2, Monte Grande, Esteban Echeverría</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="mailto:Info@SkateCore.com.ar">Info@SkateCore.com.ar</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>SEGUINOS</h4>
+                <ul class="pielista">
+                    <li><a href="https://wa.me/5491133622966"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
+                    <li><a href="https://www.instagram.com/sou.thech/"><i class="fab fa-instagram"></i>Instagram</a>
+                    </li>
+                    <li><a href="https://x.com/"><i class="fab fa-twitter"></i>Twitter</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Ubicaciones</h4>
+                <ul class="pielista">
+                    <li><a href="https://acortar.link/mdtX4P">Caballito</a></li>
+                    <li><a href="https://acortar.link/qESfBv">Canning</a></li>
+                    <li><a href="https://acortar.link/NbAsXB">Villa Devoto</a></li>
+                    <li><a href="https://acortar.link/AJ3hK9">Capital Federal</a></li>
+                    <li><a href="https://acortar.link/m3sE6C">Ezeiza</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="piefin" style="text-align: center; padding: 0;">
+            <p>Copyright © - SuperSold - Todos los derechos reservados</p>
+            <p><a href="#" style="color: #fff; text-decoration: none;">Términos y condiciones</a> | <a href="#"
+                    style="color: #fff; text-decoration: none;">Política de privacidad</a></p>
+        </div>
+    </footer>
+    {% if messages %}
+    {%for m in messages%}
+    <script>
+        Swal.fire({
+            "title": "Se realizaron los cambios",
+            "text": "{{m}}",
+            "icon": "success",
+        })
+    </script>
+    {% endfor %}
+    {% endif %}
+</body>
+
+</html>

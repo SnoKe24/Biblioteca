@@ -1,0 +1,457 @@
+/*_____________________*/
+/* GENERAL Y Base.html 
+/*---------------------*/
+
+/* PALETA DE COLORES */
+:root {
+    --principal: #000000;
+    --secundario: #74512D;
+    --detalles: #ff6600c2;
+    --sombras: whitesmoke;
+    --letter: #fffffff1;
+    --fondo: #8f4726de;
+
+    /* animacion header*/
+    --BottomOffset: 20px;
+    --LineHeight: 5px;
+    --Hover: #E75423;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--fondo);
+}
+
+/* Hover encabezado y footer*/
+
+.menu-iconos div.menu>a {
+	position: relative;
+	z-index: 1;
+}
+.menu-iconos div.menu>a:before {
+    position: absolute;
+    content: '';
+    display: block;
+    z-index: -1;
+    background: var(--Hover);
+    width: 0;
+    height: var(--LineHeight);
+    bottom: var(--BottomOffset);
+    left: calc(var(--LineHeight) / -2);
+    transition: 0.3s cubic-bezier(.03,.3,.4,.96);
+    transform: skew(-10deg);
+}
+
+.menu-iconos div.menu>a:hover:before {
+    width: calc(100% + var(--LineHeight));
+}
+
+.dl-menu-style2 ul.et-menu>li>a {
+	position: relative;
+	z-index: 1;
+}
+.dl-menu-style2 ul.et-menu>li>a:before {
+    position: absolute;
+    content: '';
+    display: block;
+    z-index: -1;
+    background: var(--Hover);
+    width: 0;
+    height: var(--LineHeight);
+    bottom: var(--BottomOffset);
+    left: calc(var(--LineHeight) / -2);
+    transition: 0.3s cubic-bezier(.03,.3,.4,.96);
+    transform: skew(-10deg);
+}
+
+.dl-menu-style2 ul.et-menu>li>a:hover:before {
+    width: calc(100% + var(--LineHeight));
+}
+
+/* Encabezado */
+header.encabezado {
+    display: flex;
+    height: 75px;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--principal);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100% ;
+}
+.logo img {
+    height: 60px;
+}
+.menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    line-height: 15px;
+    margin-right: 15px;
+    gap: 15px;
+}
+
+.menu-iconos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu a {
+    color: var(--letter);
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: var(--letter);
+}
+
+/*_____________________*/
+/*      ICONOS         */
+/*---------------------*/
+
+.iconos{
+    display: flex;
+    gap: 10px;
+    line-height: 15px;
+    margin-right: 15px;
+    justify-content: flex-end;
+}
+.iconos button:hover{
+    color: var(--Hover);
+}
+.iconos a {
+    text-decoration: none;
+}
+.iconos button {
+    background: none;
+    border: none;
+    color: var(--letter);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Pie de página */
+footer {
+    background: var(--principal);
+    color: white;
+    padding: 2rem 0 0;
+}
+
+.pie {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.pie h4 {
+    color: var(--detalles);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.pielista {
+    list-style: none;
+    padding: 0;
+}
+
+.pielista li {
+    margin-bottom: 0.5rem;
+}
+
+.pielista a {
+    color: var(--letter);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.pielista a:hover {
+    color: var(--Hover);
+}
+
+.piefin {
+    background: var(--principal);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/*_____________________*/
+/* HOME.HTML
+/*---------------------*/
+
+/* Grilla de productos */
+.grilla-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Tarjetas de producto */
+.tarjeta-producto {
+    background: var(--detalles);
+    border: 1px solid var(--sombras);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.imagen-producto {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-bottom: 1px solid var(--sombras);
+    height: auto;
+}
+.acciones-producto{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.8rem 1rem 0.3rem;
+    color: var(--principal);
+}
+
+.precio-producto {
+    font-size: 1.2rem; 
+    font-weight: 700;
+    margin: 0 1rem 0.5rem;
+    color: var(--principal);
+}
+
+.boton-comprar {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 0.5rem 0;
+    background: var(--principal);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.boton-comprar:hover {
+    background: var(--secundario);
+}
+
+/* Estilos para Productos.html, crear_producto.html, editar_producto.html, eliminar_producto.html */
+
+/*_____________________*/
+/*     FORMULARIOS     */
+/*---------------------*/
+form {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: var(--letter);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    background-color: var(--fondo);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 1rem auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilos para etiquetas de formulario */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--letter);
+}
+
+/* Estilos para campos de texto, número y textarea */
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--sombras);
+    border-radius: 6px;
+    background-color: var(--detalles);
+    color: var(--letter);
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+/* Cambiar borde y sombra al enfocar */
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: var(--Hover);
+    outline: none;
+    box-shadow: 0 0 5px var(--Hover);
+    background-color: var(--detalles);
+    color: var(--letter);
+}
+
+/* Estilos para el campo de imagen */
+form input[type="file"] {
+    margin-bottom: 16px;
+    color: var(--Hover);
+}
+
+/* Estilos para el botón de envío */
+form button[type="submit"] {
+    background-color: var(--Hover);
+    color: var(--letter);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+/*_____________________*/
+/*      CREAR          */
+/*---------------------*/
+
+/*"Agregar Nuevo Producto" */
+.btn-crear {
+    background-color: var(--Hover);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    width: 100%;
+}
+
+.btn-crear:hover {
+    background-color: var(--principal);
+}
+
+/*_____________________*/
+/*      EDITAR         */
+/*---------------------*/
+/* Botón editar */
+.btn-editar {
+    background-color: #0cc215; 
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: #6ae971;
+}
+
+/*_____________________*/
+/*      ELIMINAR       */
+/*---------------------*/   
+.btn-eliminar {
+    background-color: #da190b; 
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background-color: #f44336;
+}
+
+.btn-guardar:hover{
+    background-color: var(--principal);
+}
+
+
+/* Sacar mierdas de los formularios (Totalmente iA) */
+label[for$="-clear_id"],
+label[for$="-change_id"],
+input[id$="-clear_id"],
+input[id$="-change_id"] {
+    display: none !important;
+}
+
+/* Estilos para Galeria.html */
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+.galeria-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+/*_____________________*/
+/*      ABOUT.html     */
+/*---------------------*/
+
+
+.about-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    background-color: var(--detalles); 
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    color: var(--letter); 
+    font-family: 'Arial', sans-serif;
+}
+
+.about-container h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--principal); 
+}
+
+.about-container p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+
+/*_____________________*/
+/*      Responsive     */
+/*---------------------*/
+}
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        max-width: 100%;
+        margin: 1rem;
+    }
+}

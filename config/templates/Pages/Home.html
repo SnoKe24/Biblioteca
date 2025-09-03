@@ -1,0 +1,38 @@
+{% extends 'Pages/Base.html'%}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+{% endblock %}
+
+{% block contenido %}
+<main class="contenido-principal">
+    <section class="info-tienda">
+        <h1>Bienvenidos a Southech - Tienda de Electronica</h1>
+        <p>Encuentra las -. Calidad/Precio :v en un solo lugar.</p>
+    </section>
+
+    <section class="ultimos-productos">
+        <h2>Últimos 5 Productos Registrados</h2>
+        <div class="grilla-productos">
+            {% for producto in ultimos_productos %}
+            <div class="tarjeta-producto">
+                {% if producto.imagen_url %}
+                <img alt="Imagen de {{ producto.nombre }}" class="imagen-producto" src="{{ producto.imagen_url }}" />
+                {% else %}
+                <img alt="Imagen no disponible" class="imagen-producto" src="{% static 'config/img/no-image.png' %}" />
+                {% endif %}
+                <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+                <p class="info-producto">{{ producto.descripcion }}</p>
+                <p class="precio-producto">${{ producto.precio }}</p>
+                <button class="boton-comprar">Comprar</button>
+            </div>
+            {% empty %}
+            <p>No hay productos disponibles.</p>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+{% endblock %}

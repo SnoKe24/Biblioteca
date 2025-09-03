@@ -1,0 +1,34 @@
+{% extends 'Pages/Base.html' %}
+
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+<link rel="stylesheet" href="{% static 'config/css/style.css' %}">
+{% block contenido %}
+
+<a href="{% url 'crear_producto' %}" class="btn-crear">Agregar Nuevo Producto</a>
+
+<div class="grilla-productos">
+    {% for producto in productos %}
+    <div class="tarjeta-producto">
+        {% if producto.imagen %}
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="imagen-producto">
+        {% else %}
+        <div class="imagen-producto">Sin imagen</div>
+        {% endif %}
+        <div class="nombre-producto">{{ producto.nombre }}</div>
+        <div class="descripcion-producto">{{ producto.descripcion|safe }}</div>
+        <div class="precio-producto">${{ producto.precio }}</div>
+        <div class="acciones-producto">
+            <a href="{% url 'editar_producto' producto.id %}" class="btn-editar">Editar</a>
+            <a href="{% url 'eliminar_producto' producto.id %}" class="btn-eliminar">Eliminar</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay productos registrados.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

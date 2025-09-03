@@ -1,0 +1,18 @@
+{% extends 'Pages/Base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'config/css/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<h1>Galería de Imágenes</h1>
+<div class="galeria-grid">
+    {% for producto in productos %}
+    <div class="galeria-item">
+        <img src="{{ producto.imagen.url }}" alt="Imagen de {{ producto.nombre }}">
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
