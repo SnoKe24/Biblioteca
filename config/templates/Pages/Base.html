@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Southech</title>
 
-    <link rel="icon" href="{% static 'img/isologoB.ico' %}">
+    <link rel="icon" href="{% static 'img/libro2.svg' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     {% block css %}
     {% endblock %}
@@ -22,47 +22,47 @@
 <body>
     <header class="encabezado">
         <div class="logo">
-            <img src="{% static 'img/' %}" alt="librologo">
+            <img src="{% static 'img/libro2.svg' %}" alt="librologo">
         </div>
-        <div class="menu-iconos">   
-            <div class="menu">
+        <div class="menu-iconos">
+            <nav class="menu">
                 <a href="{% url 'Home' %}">Inicio</a>
                 <a href="{% url 'Productos' %}">Productos</a>
                 <a href="{% url 'Catalogo' %}">Catálogo</a>
                 <a href="{% url 'About' %}">Nosotros</a>
-                
 
-            <div class="iconos">
-                <a href="https://wa.me/5491133622966">
-                    <button>
-                        <i class="fab fa-whatsapp"></i>
-                    </button>
-                </a>
-                <a href="https://www.instagram.com/sou.thech/">
-                    <button>
-                        <i class="fab fa-instagram"></i>
-                    </button>
-                </a>
-                <a href="https://x.com/dondetashermosa">
-                    <button>
-                        <i class="fab fa-twitter"></i>
-                    </button>
-                </a>
-                <li>
-                    {% if user.is.authenticated %}
-                </li>
-                <li>
-                    <a href="#">{{ user.username }}</a>
-                </li>
-                {% else %}
+
+                <div class="iconos">
+                    <a href="https://wa.me/5491133622966">
+                        <button>
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </a>
+                    <a href="https://www.instagram.com/sou.thech/">
+                        <button>
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                    </a>
+                    <a href="https://x.com/dondetashermosa">
+                        <button>
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                    </a>
+                    <li>
+                        {% if user.is.authenticated %}
+                    </li>
+                    <li>
+                        <a href="#">{{ user.username }}</a>
+                    </li>
+                    {% else %}
                     <a href="{% url 'login' %}">
                         <button>
                             <i class="fa circle-user"></i>
                         </button>
                     </a>
-                {% endif %}
-            </div>
-            </div>
+                    {% endif %}
+                </div>
+            </nav>
         </div>
 
     </header>
