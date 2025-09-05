@@ -27,11 +27,11 @@ body{
 
 /* Hover encabezado y footer*/
 
-.menu-iconos div.menu>a {
+.menu-iconos nav.menu>a {
 	position: relative;
 	z-index: 1;
 }
-.menu-iconos div.menu>a:before {
+.menu-iconos nav.menu>a:before {
     position: absolute;
     content: '';
     display: block;
@@ -45,7 +45,7 @@ body{
     transform: skew(-10deg);
 }
 
-.menu-iconos div.menu>a:hover:before {
+.menu-iconos nav.menu>a:hover:before {
     width: calc(100% + var(--LineHeight));
 }
 
@@ -85,7 +85,7 @@ header.encabezado {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100% ;
+    width: 95% ;
 }
 .logo img {
     height: 60px;

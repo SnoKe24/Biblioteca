@@ -35,9 +35,10 @@ LOGOUT_REDIRECT_URL = "/"
 # Application definition
 
 INSTALLED_APPS = [    
-    #Interfaz de admin :p
+    #Interfaz de admin (Hace falta instalarlo "pip install django-admin-interface"):p
     'admin_interface',
     'colorfield',
+# --------------------------------
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,12 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'config.apps.ConfigConfig',
+# --------------------------------
     'ckeditor',
 
 
 ]
 
-#Interfaz de admin :P
+# Seguridad del Framework:
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
