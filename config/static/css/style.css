@@ -4,12 +4,12 @@
 
 /* PALETA DE COLORES */
 :root {
-    --principal: #000000;
+    --principal: #8f4726;
     --secundario: #74512D;
     --detalles: #ff6600c2;
     --sombras: whitesmoke;
     --letter: #fffffff1;
-    --fondo: #8f4726de;
+    --fondo: whitesmoke;
 
     /* animacion header*/
     --BottomOffset: 20px;
@@ -27,11 +27,12 @@ body{
 
 /* Hover encabezado y footer*/
 
-.menu-iconos nav.menu>a {
+.menu-iconos .menu > a {
 	position: relative;
 	z-index: 1;
 }
-.menu-iconos nav.menu>a:before {
+
+.menu-iconos .menu > a:before {
     position: absolute;
     content: '';
     display: block;
@@ -39,15 +40,18 @@ body{
     background: var(--Hover);
     width: 0;
     height: var(--LineHeight);
-    bottom: var(--BottomOffset);
+    bottom: -5px;
     left: calc(var(--LineHeight) / -2);
     transition: 0.3s cubic-bezier(.03,.3,.4,.96);
     transform: skew(-10deg);
 }
 
-.menu-iconos nav.menu>a:hover:before {
+
+
+.menu-iconos .menu > a:hover:before {
     width: calc(100% + var(--LineHeight));
 }
+
 
 .dl-menu-style2 ul.et-menu>li>a {
 	position: relative;
@@ -232,7 +236,7 @@ footer {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0.8rem 1rem 0.3rem;
-    color: var(--principal);
+    color: var(--letter);
 }
 
 .precio-producto {
@@ -271,7 +275,7 @@ form {
     color: var(--letter);
     letter-spacing: 0.05em;
     font-weight: 500;
-    background-color: var(--fondo);
+    background-color: var(--principal);
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
@@ -297,7 +301,7 @@ form select {
     margin-bottom: 16px;
     border: 1px solid var(--sombras);
     border-radius: 6px;
-    background-color: var(--detalles);
+    background-color: #e7dbcb;
     color: var(--letter);
     font-size: 15px;
     transition: border-color 0.3s ease;
