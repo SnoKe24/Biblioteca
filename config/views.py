@@ -3,10 +3,40 @@ from .forms import ProductoForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.db.models import Q
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 # Vista base que renderiza la plantilla base
 def base(request):
     return render(request, 'Pages/Base.html')
 
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # iniciar sesión automáticamente
+            return redirect('Home')  # Cambia a la página principal que uses
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'Pages/register.html', {'form': form})
+
+def login_view(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('Home')
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'Pages/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('Home')
 # Vista para la página principal (Home)
 def home(request):
     ultimos_productos_desc = Producto.objects.order_by('-id')[:5]
@@ -28,8 +58,21 @@ def about(request):
 
 # Vista para listar todos los productos con opciones CRUD
 def productos(request):
-    productos = Producto.objects.all()
-    return render(request, 'Pages/Productos.html', {'productos': productos})
+    query = request.GET.get("q")  # Texto que escribe el usuario
+
+    productos = Producto.objects.all()  # Todos los productos
+
+    # Si escribió algo → filtramos
+    if query:
+        productos = productos.filter(
+            Q(nombre__icontains=query) |
+            Q(descripcion__icontains=query)
+        )
+
+    return render(request, 'Pages/Productos.html', {
+        'productos': productos,
+        'query': query
+    })
 
 # Vista para crear un nuevo producto (registro oculto)
 def crear_producto(request):
@@ -63,3 +106,15 @@ def eliminar_producto(request, producto_id):
         messages.success(request, "Eliminado con Exito")
         return redirect('Productos')
     return render(request, 'Pages/eliminar_producto.html', {'producto': producto})
+
+
+
+def buscar_producto(request):
+    query = request.GET.get("q")  # nombre del input
+
+    if query:
+        productos = Producto.objects.filter(nombre__icontains=query)
+    else:
+        productos = Producto.objects.none()  # lista vacía
+
+    return render(request, "Catalogo.html", {"productos": productos, "query": query})
