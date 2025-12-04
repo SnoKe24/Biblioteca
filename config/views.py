@@ -60,6 +60,7 @@ def about(request):
 # Vista para listar todos los productos con opciones CRUD
 def productos(request):
     query = request.GET.get("q")  # Texto que escribe el usuario
+    categoria_id = request.GET.get("categoria", "")
 
     productos = Producto.objects.all()  # Todos los productos
 
@@ -69,10 +70,18 @@ def productos(request):
             Q(nombre__icontains=query) |
             Q(descripcion__icontains=query)
         )
+    
+        # filtro por categoría
+    if categoria_id:
+        productos = productos.filter(categoria_id=categoria_id)
+        # ⬅ ESTA LÍNEA TE FALTABA
+    categorias = Categoria.objects.all()
 
     return render(request, 'Pages/Productos.html', {
         'productos': productos,
-        'query': query
+        'categorias': categorias,
+        'query': query,
+        'categorias_selecionada': categoria_id
     })
 
 # Vista para crear un nuevo producto (registro oculto)
