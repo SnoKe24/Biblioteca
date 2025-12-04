@@ -1,8 +1,16 @@
 from django.urls import path
 from .views import home, catalogo, about, productos, base, crear_producto, editar_producto, eliminar_producto
 from . import views
+from django.contrib import admin
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # --- Registro / Login / Logout ---
+    path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    
     path('', base, name="Base"),
     path('Home/', home, name="Home"),
     path('About/', about, name="About"),

@@ -33,12 +33,30 @@
                 <a href="{% url 'About' %}">Nosotros</a>
 
 
-                <div class="iconos">
-                    <a href="{% url 'login' %}">
-                        <button>
-                            <i class="bi bi-person"></i>
-                        </button>
-                    </a>
+    {% if user.is_authenticated %}
+
+        <span style="color:white; margin-right:10px;">
+            Hola, {{ user.username }}
+        </span>
+
+        <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">
+                <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}">
+            <button><i class="bi bi-person"></i></button>
+        </a>
+
+        <a href="{% url 'register' %}">
+            <button><i class="bi bi-person-plus"></i></button>
+        </a>
+
+    {% endif %}
                     <a href="https://www.instagram.com/sou.thech/">
                         <button>
                             <i class="fab fa-instagram"></i>
