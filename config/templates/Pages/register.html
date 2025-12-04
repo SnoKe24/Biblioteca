@@ -1,6 +1,28 @@
-<h2>Registrarse</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrarse</button>
-</form>
+{% extends "Pages/Base.html" %}
+{% load static %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0" style="background-color: var(--principal); color: var(--letter);">
+                <div class="card-header text-center" style="background-color: var(--secundario); color: var(--letter);">
+                    <h2 class="mb-0">Registrarse</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-lg" style="background-color: var(--Hover); color: var(--letter); border: none;">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center" style="background-color: var(--secundario); color: var(--letter);">
+                    <small>¿Ya tienes cuenta? <a href="{% url 'login' %}" style="color: var(--detalles);">Inicia sesión</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

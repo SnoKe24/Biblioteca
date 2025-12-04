@@ -1,15 +1,15 @@
 /*_____________________*/
-/* GENERAL Y Base.html 
+/* GENERAL Y Base.html
 /*---------------------*/
 
 /* PALETA DE COLORES */
 :root {
-    --principal: #000000;
+    --principal: #8f4726;
     --secundario: #74512D;
     --detalles: #ff6600c2;
     --sombras: whitesmoke;
     --letter: #fffffff1;
-    --fondo: #8f4726de;
+    --fondo: whitesmoke;
 
     /* animacion header*/
     --BottomOffset: 20px;
@@ -22,16 +22,27 @@
     box-sizing: border-box;
 }
 body{
-    background-color: var(--fondo);
+    background-color:#dfa97c;
+    
 }
+.presentacion {
+    width: 100vw;
+    height: auto;
+    margin-left: calc(-50vw + 50%);
+    max-width: none;
+}
+
+
+
 
 /* Hover encabezado y footer*/
 
-.menu-iconos div.menu>a {
+.menu-iconos .menu > a {
 	position: relative;
 	z-index: 1;
 }
-.menu-iconos div.menu>a:before {
+
+.menu-iconos .menu > a:before {
     position: absolute;
     content: '';
     display: block;
@@ -39,15 +50,18 @@ body{
     background: var(--Hover);
     width: 0;
     height: var(--LineHeight);
-    bottom: var(--BottomOffset);
+    bottom: -5px;
     left: calc(var(--LineHeight) / -2);
     transition: 0.3s cubic-bezier(.03,.3,.4,.96);
     transform: skew(-10deg);
 }
 
-.menu-iconos div.menu>a:hover:before {
+
+
+.menu-iconos .menu > a:hover:before {
     width: calc(100% + var(--LineHeight));
 }
+
 
 .dl-menu-style2 ul.et-menu>li>a {
 	position: relative;
@@ -85,7 +99,7 @@ header.encabezado {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100% ;
+    width: 95% ;
 }
 .logo img {
     height: 60px;
@@ -232,7 +246,7 @@ footer {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0.8rem 1rem 0.3rem;
-    color: var(--principal);
+    color: var(--letter);
 }
 
 .precio-producto {
@@ -271,7 +285,7 @@ form {
     color: var(--letter);
     letter-spacing: 0.05em;
     font-weight: 500;
-    background-color: var(--fondo);
+    background-color: var(--principal);
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
@@ -297,7 +311,7 @@ form select {
     margin-bottom: 16px;
     border: 1px solid var(--sombras);
     border-radius: 6px;
-    background-color: var(--detalles);
+    background-color: #e7dbcb;
     color: var(--letter);
     font-size: 15px;
     transition: border-color 0.3s ease;
@@ -332,6 +346,23 @@ form button[type="submit"] {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
+}
+
+/* Estilos específicos para descripción y precio en formularios de productos */
+form input.input-precio {
+    color: black;
+}
+
+form input.input-precio:focus {
+    color: black;
+}
+
+.descripcion-ckeditor .cke_editable {
+    color: black;
+}
+
+.descripcion-ckeditor .cke_editable:focus {
+    color: black;
 }
 /*_____________________*/
 /*      CREAR          */
@@ -418,7 +449,6 @@ input[id$="-change_id"] {
 /*      ABOUT.html     */
 /*---------------------*/
 
---admin-interface-logo-default-background-image
 
 .about-container {
     max-width: 900px;
@@ -455,4 +485,31 @@ input[id$="-change_id"] {
         max-width: 100%;
         margin: 1rem;
     }
+}
+
+/*_____________________*/
+/*      REGISTER.HTML  */
+/*---------------------*/
+
+.card input[type="text"],
+.card input[type="email"],
+.card input[type="password"],
+.card select,
+.card textarea {
+    background-color: var(--fondo);
+    color: var(--principal);
+    border: 1px solid var(--sombras);
+}
+.card input[type="text"]:focus,
+.card input[type="email"]:focus,
+.card input[type="password"]:focus,
+.card select:focus,
+.card textarea:focus {
+    background-color: var(--detalles);
+    color: var(--letter);
+    border-color: var(--Hover);
+    box-shadow: 0 0 5px var(--Hover);
+}
+.btn:hover {
+    background-color: var(--secundario) !important;
 }
