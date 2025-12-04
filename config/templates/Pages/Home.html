@@ -27,7 +27,7 @@
                 <h3 class="nombre-producto">{{ producto.nombre }}</h3>
                 <p class="info-producto">{{ producto.descripcion }}</p>
                 <p class="precio-producto">${{ producto.precio }}</p>
-                <button class="boton-comprar">Comprar</button>
+                <a href="{% url 'agregar_carrito' producto.id %}" class="boton-agregar">Agregar al Carrito</a>
             </div>
             {% empty %}
             <p>No hay productos disponibles.</p>

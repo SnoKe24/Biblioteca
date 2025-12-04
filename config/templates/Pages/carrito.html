@@ -1,33 +1,45 @@
 {% extends 'Pages/Base.html' %}
 
 {% block contenido %}
-<h1>🛒 Carrito</h1>
+<div class="carrito-container">
+    <h1 class="carrito-titulo">🛒 Mi Carrito</h1>
 
-{% if items %}
-<ul class="carrito-lista">
-    {% for item in items %}
-    <li class="carrito-item">
-
-        {% if item.producto.imagen %}
-            <img src="{{ item.producto.imagen.url }}" width="80">
-        {% else %}
-            <img src="/static/img/no-image.png" width="80">
-        {% endif %}
-
-        <div class="carrito-info">
-            <h4>{{ item.obj.nombre }}</h4>
-            <p>Precio: ${{ item.obj.precio }}</p>
-            <p>Cantidad: {{ item.cantidad }}</p>
-            <p>Subtotal: ${{ item.subtotal }}</p>
+    {% if items %}
+    <div class="carrito-items">
+        {% for item in items %}
+        <div class="carrito-item-card">
+            <div class="carrito-item-imagen">
+                {% if item.obj.imagen %}
+                    <img src="{{ item.obj.imagen.url }}" alt="{{ item.obj.nombre }}">
+                {% else %}
+                    <img src="/static/img/no-image.png" alt="Sin imagen">
+                {% endif %}
+            </div>
+            <div class="carrito-item-detalles">
+                <h3 class="carrito-item-nombre">{{ item.obj.nombre }}</h3>
+                <p class="carrito-item-precio">Precio unitario: ${{ item.obj.precio }}</p>
+                <p class="carrito-item-cantidad">Cantidad: {{ item.cantidad }}</p>
+                <p class="carrito-item-subtotal">Subtotal: ${{ item.subtotal }}</p>
+            </div>
         </div>
+        {% endfor %}
+    </div>
 
-    </li>
-    {% endfor %}
-</ul>
+    <div class="carrito-total">
+        <h3>Total: ${{ total }}</h3>
+    </div>
 
-<a href="{% url 'vaciar_carrito' %}"class="btn btn-danger mt-3">Vaciar carrito</a>
+    <div class="carrito-acciones">
+        <a href="{% url 'vaciar_carrito' %}" class="btn-vaciar">Vaciar Carrito</a>
+        <a href="{% url 'Productos' %}" class="btn-continuar">Continuar Comprando</a>
+        <button class="btn-comprar">Comprar Ahora</button>
+    </div>
 
-{% else %}
-<p>Tu carrito está vacío.</p>
-{% endif %}
+    {% else %}
+    <div class="carrito-vacio">
+        <p>Tu carrito está vacío.</p>
+        <a href="{% url 'Productos' %}" class="btn-explorar">Explorar Productos</a>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
