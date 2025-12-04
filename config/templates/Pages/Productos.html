@@ -9,11 +9,32 @@
 {% block contenido %}
 
 <a href="{% url 'crear_producto' %}" class="btn-crear">Agregar Nuevo Producto</a>
-<form method="GET" class="d-flex mb-3">
+
+<!-- 🔎 FORMULARIO DE BUSQUEDA + CATEGORÍAS -->
+<form method="GET" class="d-flex mb-3" style="gap:10px;">
+
+    <!-- SELECT DE CATEGORÍAS -->
+    <select name="categoria" class="form-select" style="max-width: 250px;">
+        <option value="">Todas las categorías</option>
+
+        {% for cat in categorias %}
+            <option value="{{ cat.id }}"
+                {% if categoria_seleccionada == cat.id|stringformat:"s" %}
+                    selected
+                {% endif %}
+            >
+                {{ cat.nombre }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- BUSCADOR -->
     <input type="text" name="q" class="form-control"
         placeholder="Buscar producto..." value="{{ request.GET.q }}">
-    <button class="btn btn-primary ms-2" type="submit">Buscar</button>
+
+    <button class="btn btn-primary" type="submit">Filtrar</button>
 </form>
+
 <div class="grilla-productos">
     {% for producto in productos %}
 <div class="tarjeta-producto">

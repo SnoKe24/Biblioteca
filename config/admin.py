@@ -3,7 +3,7 @@ from .models import *
 from .apps import *
 
 # Register your models here.
-
+admin.site.register(Categoria)
 class ProductoAdmin(admin.ModelAdmin):
     list_per_page = 10
 

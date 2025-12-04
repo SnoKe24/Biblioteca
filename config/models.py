@@ -5,6 +5,12 @@ class Productos(models.Model):
     Codigo= models.IntegerField(primary_key=True),
     Nombre= models.TextField(max_length=20),
 
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.nombre
+    
 class Producto(models.Model):
     # Nombre del producto, campo obligatorio de texto corto
     nombre = models.CharField(max_length=100, help_text="")
@@ -14,6 +20,8 @@ class Producto(models.Model):
     # Campo para subir imagen y almacenarla en carpeta media
     imagen = models.ImageField(upload_to="productos/", null=True, blank=True)
     imagen_url = models.CharField(max_length=255, blank=True, null=True, help_text="Ruta o URL de la imagen del producto")
+    # Filtrar por categoria
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name="productos", null=True, blank=True)
     # Fecha y hora de creación automática para ordenar productos por fecha
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
