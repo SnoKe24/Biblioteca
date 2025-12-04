@@ -475,6 +475,7 @@ input[id$="-change_id"] {
 }
 
 /*_____________________*/
+<<<<<<< HEAD
 /*      REGISTER.HTML  */
 /*---------------------*/
 
@@ -569,3 +570,33 @@ input[id$="-change_id"] {
 /*---------------------*/
 
 
+=======
+/*       CARRITO       */
+/*---------------------*/
+.carrito-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background: #ffffff20;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.carrito-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+.carrito-info h4 {
+    margin: 0;
+    font-size: 18px;
+}
+>>>>>>> e0d549aea9ada70cb73560750a4b7e910ad02253
