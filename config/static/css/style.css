@@ -1,5 +1,5 @@
 /*_____________________*/
-/* GENERAL Y Base.html 
+/* GENERAL Y Base.html
 /*---------------------*/
 
 /* PALETA DE COLORES */
@@ -22,8 +22,18 @@
     box-sizing: border-box;
 }
 body{
-    background-color: var(--fondo);
+    background-color:#dfa97c;
+    
 }
+.presentacion {
+    width: 100vw;
+    height: auto;
+    margin-left: calc(-50vw + 50%);
+    max-width: none;
+}
+
+
+
 
 /* Hover encabezado y footer*/
 
