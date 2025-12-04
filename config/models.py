@@ -12,7 +12,7 @@ class Producto(models.Model):
     # Precio del producto con dos decimales
     precio = models.DecimalField(max_digits=8, decimal_places=2, help_text="$ Pesos")
     # Campo para subir imagen y almacenarla en carpeta media
-    imagen = models.ImageField(upload_to='productos/', blank=True, null=True, help_text="")
+    imagen = models.ImageField(upload_to="productos/", null=True, blank=True)
     imagen_url = models.CharField(max_length=255, blank=True, null=True, help_text="Ruta o URL de la imagen del producto")
     # Fecha y hora de creación automática para ordenar productos por fecha
     fecha_creacion = models.DateTimeField(auto_now_add=True)

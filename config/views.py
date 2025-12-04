@@ -1,4 +1,4 @@
-from .models import Producto
+from .models import *
 from .forms import ProductoForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from .cart import add_to_cart, remove_from_cart, clear_cart, get_cart
 # Vista base que renderiza la plantilla base
 def base(request):
     return render(request, 'Pages/Base.html')
@@ -118,3 +119,48 @@ def buscar_producto(request):
         productos = Producto.objects.none()  # lista vacía
 
     return render(request, "Catalogo.html", {"productos": productos, "query": query})
+
+def carrito(request):
+    cart = request.session.get('carrito', {})
+    productos = []
+    total = 0
+
+    for product_id, cantidad in cart.items():
+        p = Producto.objects.get(id=product_id)
+        subtotal = p.precio * cantidad
+        total += subtotal
+        productos.append({
+            'obj': p,
+            'cantidad': cantidad,
+            'subtotal': subtotal
+        })
+
+    return render(request, 'Pages/carrito.html', {
+        'items': productos,
+        'total': total
+    })
+
+
+
+
+def agregar_carrito(request, id):
+    carrito = request.session.get('carrito', {})
+
+    id = str(id)  # <-- OBLIGATORIO: guardar como STRING
+
+    carrito[id] = carrito.get(id, 0) + 1
+
+    request.session['carrito'] = carrito
+    return redirect('Productos')
+
+
+
+def eliminar_carrito(request, id):
+    remove_from_cart(request.session, id)
+    return redirect('carrito')
+
+
+def vaciar_carrito(request):
+    request.session['carrito'] = {}  # vaciar
+    request.session.modified = True  # asegurar que se guarde
+    return redirect('carrito')
